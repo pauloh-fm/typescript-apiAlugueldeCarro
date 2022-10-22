@@ -1,0 +1,1 @@
+  return res.json({ msg: "Server Funcionando" });
