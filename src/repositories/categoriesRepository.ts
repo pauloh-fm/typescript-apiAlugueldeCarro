@@ -23,6 +23,17 @@ class CategoriesRepository {
 
     this.categories.push(categorie);
   }
+
+  // criando metodo para exibir uma list de todas as categorias
+  list(): Category[] {
+    return this.categories;
+  }
+
+  // criando um findbyname
+  findByName(name: string): Category | undefined {
+    return this.categories.find(category => category.name === name);
+  }
 }
 
+// eslint-disable-next-line import/prefer-default-export
 export { CategoriesRepository };
