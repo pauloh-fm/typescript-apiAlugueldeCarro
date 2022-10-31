@@ -8,7 +8,10 @@ const categoriesRepository = new CategoriesRepository();
 // rota cria categoria de carro
 categoriesRoutes.post('/categories', (req, res) => {
   const { name, description } = req.body;
-
+  if (categoriesRepository.findByName(name)) {
+    return res.status(400).json({ msg: 'Categoria já existe' });
+  }
+  categoriesRepository.create({ name, description });
 
   return res.status(201).send(); // status criado
 });

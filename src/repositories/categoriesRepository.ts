@@ -1,6 +1,7 @@
 // repositorio para manipular os dados
+// metodos são criados aqui
 import { Category } from '../model/category';
-// DTO - data transfer objects - objeto para transferir dados
+// DTO - data transfer objects - objeto para transferir dados (entre uma classe e outra) para pegar valores da rota e devolverem no repo
 
 interface IcategoryDTO {
   name: string;
@@ -15,6 +16,7 @@ class CategoriesRepository {
 
   create({ description, name }: IcategoryDTO): void {
     const categorie = new Category(); // assim pra usar o constructor
+
     Object.assign(categorie, {
       name,
       description,
