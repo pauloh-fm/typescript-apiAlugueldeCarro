@@ -2,6 +2,7 @@
 // Processar dados
 // Reponsabilidade - Cadastrar categoria
 import { CategoriesRepository } from '../repositories/categoriesRepository';
+import { ICategoriesRepository } from '../repositories/ICategoriesRepository';
 
 interface IRequest {
   name: string;
@@ -11,7 +12,7 @@ interface IRequest {
 class CreateCategorieService {
   // private CategoriesRepository : CategoriesRepository; // substitute for private constructor
   // eslint-disable-next-line no-useless-constructor
-  constructor(private categoriesRepository: CategoriesRepository) {
+  constructor(private categoriesRepository: ICategoriesRepository) { // ao invez de receber uma classe, recebe uma interface
     // D - Dependencia inversa SOLID
     // this.categoriesRepository = categoriesRepository; // substitute for private constructor
   }

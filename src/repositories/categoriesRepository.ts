@@ -1,13 +1,10 @@
 // repositorio para manipular os dados
 // metodos são criados aqui
 import { Category } from '../model/category';
+import { ICategoriesRepository, IcategoryDTO } from './ICategoriesRepository';
 // DTO - data transfer objects - objeto para transferir dados (entre uma classe e outra) para pegar valores da rota e devolverem no repo
 
-interface IcategoryDTO {
-  name: string;
-  description: string;
-}
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
   constructor() {
