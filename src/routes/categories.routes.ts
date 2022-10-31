@@ -1,4 +1,6 @@
+// Fazer requesição e executar serviço
 import { Router } from 'express';
+import { CreateCategorieService } from '../service/createCategoryService';
 import { CategoriesRepository } from '../repositories/categoriesRepository';
 
 const categoriesRoutes = Router();
@@ -8,11 +10,10 @@ const categoriesRepository = new CategoriesRepository();
 // rota cria categoria de carro
 categoriesRoutes.post('/categories', (req, res) => {
   const { name, description } = req.body;
-  if (categoriesRepository.findByName(name)) {
-    return res.status(400).json({ msg: 'Categoria já existe' });
-  }
-  categoriesRepository.create({ name, description });
 
+  // eslint-disable-next-line prettier/prettier
+  const createCategorieService = new CreateCategorieService(categoriesRepository);
+  createCategorieService.execute({ name, description });
   return res.status(201).send(); // status criado
 });
 // get all categories
